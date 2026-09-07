@@ -182,12 +182,14 @@
     taskListEl.innerHTML = tasks.map(t => {
       const status = taskStatus(t);
       const rowClass = status === "concluida" ? "done" : (status === "atrasada" ? "late" : "");
+      const tag = status === "atrasada" ? `<span class="task-status-tag">Atrasada</span>` : "";
       return `
         <div class="task-row ${rowClass}" data-id="${t.id}">
           <button class="check" data-action="toggle">${NICONS.check}</button>
           <div class="task-info">
             <div class="task-title">${t.title}</div>
             <div class="task-date">${NICONS.calendar}<span>${formatDateBR(t.date)}</span></div>
+            ${tag}
           </div>
           <button class="task-del" data-action="delete">${NICONS.trash}</button>
         </div>`;
